@@ -267,39 +267,171 @@ Context drift happens when your Space content lags behind codebase evolution.
 
 ---
 
-## 🛠️ Exercise 1: Context Strategy Analysis
+## 🛠️ Exercise 1: Apply Context Engineering to Your Own Repository
 
-**What you'll do**: Analyze three scenarios and recommend the optimal context strategy.
+**What you'll do**: Apply context engineering principles to a real challenge in one of your own repositories. This hands-on exercise ensures you leave the session with practical skills you can use immediately.
 
-**Time**: 25 minutes
+**Time**: 30 minutes
 
-**Scenarios**:
+**Prerequisites**:
+- Access to a GitHub repository you actively work on
+- A current or recent challenge in that repository (bug, feature request, or technical debt)
 
-1. **Scenario A**: You're new to a 200-file microservice and need to add authentication. You've read the README and identified 3 relevant files but aren't sure what else might be impacted.
+### Step 1: Identify Your Real-World Scenario (5 minutes)
 
-2. **Scenario B**: You're debugging a critical path in a familiar 10,000-file monorepo. You know exactly which 7 files handle the payment flow.
+Choose ONE scenario from your own work:
 
-3. **Scenario C**: You're exploring an unfamiliar open-source library to understand how rate limiting is implemented across the codebase.
+**Option A: Active Bug or Issue**
+- A bug you're currently investigating or recently fixed
+- An open issue that needs investigation
 
-**For each scenario, provide**:
-1. Recommended strategy (selective files / full repo / combined)
-2. Rationale (why this strategy fits the scenario)
-3. What the strategy optimizes for (precision / exploration / balance)
+**Option B: Planned Feature**
+- A feature you're planning to implement
+- A new capability requested by users or stakeholders
 
-**Example answer format** (Scenario A):
+**Option C: Code Quality Challenge**
+- Technical debt you want to address
+- Performance optimization needed
+- Refactoring opportunity
+
+**Document your scenario**:
 ```
-Strategy: Combined approach (repository + 3 explicit files)
-Rationale: Limited codebase knowledge means you might miss dependencies. 
-Repository provides breadth for discovery. Explicit files signal priority 
-for the known authentication components.
-Optimizes for: Balance between exploration (finding hidden dependencies) 
-and precision (focusing on known auth components).
+Repository: [your-org/your-repo]
+Scenario Type: [Bug / Feature / Code Quality]
+Brief Description: [2-3 sentence description of the challenge]
 ```
 
-**Success criteria**:
-- ✅ Strategy matches scenario context (familiarity + task scope)
-- ✅ Rationale references specific scenario details
-- ✅ Clear explanation of what you're optimizing for
+### Step 2: Analyze Your Context Needs (10 minutes)
+
+Answer these questions about your scenario:
+
+**A. Codebase Familiarity**
+- [ ] I'm very familiar with this codebase (worked on it 6+ months)
+- [ ] I'm moderately familiar (worked on it occasionally)
+- [ ] I'm new to this codebase (less than 1 month experience)
+
+**B. Scope Definition**
+- [ ] I know exactly which files are involved (list them)
+- [ ] I have a general idea of the area (list components/modules)
+- [ ] I'm not sure where to look (describe what you do know)
+
+**C. Dependencies**
+- [ ] This is isolated to one module/component
+- [ ] This touches multiple areas of the codebase
+- [ ] This potentially affects the entire system
+
+**D. Documentation Availability**
+- What documentation exists that would help? (README, ADRs, API docs, design docs)
+- What's missing that you wish existed?
+
+### Step 3: Design Your Context Strategy (10 minutes)
+
+Based on your analysis, design a context strategy:
+
+**1. Choose Your Primary Strategy**
+```
+Selected Strategy: [Selective Files / Full Repository / Combined]
+
+Reasoning: [Explain why this strategy fits your specific situation, 
+referencing your answers from Step 2]
+```
+
+**2. List Specific Context Elements**
+
+**Files to include** (if using selective or combined):
+- `path/to/file1.ext` - [why this file matters]
+- `path/to/file2.ext` - [why this file matters]
+- `path/to/file3.ext` - [why this file matters]
+- [continue as needed, aim for 5-10 files]
+
+**Additional context sources**:
+- [ ] Specific issues: #[number] - [relevance]
+- [ ] Documentation files: [which docs and why]
+- [ ] Configuration files: [which configs]
+- [ ] Test files: [which tests provide clarity]
+
+**3. Draft Custom Instructions**
+
+Write 3-5 instructions specific to your repository:
+
+```
+Example instructions for your repository:
+1. This repository uses [framework/library version]. Always check compatibility.
+2. Follow the [architectural pattern] defined in [doc/file].
+3. All new features must include [specific testing requirement].
+4. Error handling must use [specific pattern/library].
+5. Before suggesting changes, review [specific file] for coding standards.
+```
+
+### Step 4: Validate Your Strategy (5 minutes)
+
+**Test your strategy against common failure modes:**
+
+| Failure Mode | Your Protection | ✓/✗ |
+|--------------|----------------|-----|
+| **Generic suggestions** | What specific instructions prevent this? | |
+| **Missing dependencies** | How does your file selection catch these? | |
+| **Outdated patterns** | What ensures freshness? | |
+| **Wrong architecture** | What guides AI to correct patterns? | |
+| **Hallucinated code** | What grounds AI in reality? | |
+
+**Reflection questions**:
+1. What might you miss with this strategy?
+2. How would you know if your context needs adjustment?
+3. What would trigger you to update this context in the future?
+
+### Step 5: Commit Your Plan (Optional)
+
+**Create a context engineering document in your repository:**
+
+Save your analysis as `.github/copilot-context-strategy.md` or add to your project wiki.
+
+**Template**:
+```markdown
+# Copilot Context Strategy
+
+## Common Scenarios
+
+### [Your Scenario Name]
+**When**: [Describe when this context strategy applies]
+**Strategy**: [Selective/Full/Combined]
+**Files**: [List key files]
+**Instructions**: [List custom instructions]
+**Last Updated**: [Date]
+**Owner**: [Your name/team]
+```
+
+**Why document this?** Future teammates (and future you) can reuse proven context strategies instead of reinventing them.
+
+### Success Criteria
+
+Your exercise is complete when you can answer "Yes" to these:
+
+- ✅ I've identified a real scenario from my own repository
+- ✅ I've analyzed my context needs systematically
+- ✅ I've chosen a strategy that matches my familiarity and task scope
+- ✅ I've listed specific files/resources with clear rationale
+- ✅ I've written custom instructions specific to my repository
+- ✅ I've considered failure modes and how my strategy addresses them
+
+### Discussion & Share
+
+**Share with the group** (optional):
+- What repository type did you analyze? (microservice, monorepo, library, etc.)
+- What strategy did you choose and why?
+- What surprised you during the analysis?
+- What would you do differently next time?
+
+### Real-World Application
+
+**After this session**:
+1. Create a Space with your designed context strategy
+2. Test it with actual questions about your scenario
+3. Observe the quality of suggestions
+4. Iterate on your file selection and instructions
+5. Document what worked for your team
+
+**Tip**: Start simple. You can always add more context, but removing noise is harder than adding signal.
 
 ---
 
